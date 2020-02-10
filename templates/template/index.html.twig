@@ -27,19 +27,34 @@
             </div>
         </div>
         </div>
-    {% for card in cards %}
-    <div class="contain2" style="flex-direction:column; display:block;">
+    
+{% for i in range (1,cards|length -1, 2)%}
+    <div class="contain2">
     <div class="card" style="width: 18rem;">
-        <img src="{{ card.preview }}" class="card-img-top" alt="...">
+        <img src="{{ cards[i].preview }}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">{{ card.name }}</h5>
-            {% if card.active == true %}
-            <h6 {{ card.active == 1 ? 'style="color:green;"'}}>Actif</h6>
+            <h5 class="card-title">{{ cards[i].name }}</h5>
+            {% if cards[i].active == true %}
+            <h6 {{ cards[i].active == 1 ? 'style="color:green;"'}}>Actif</h6>
             {% endif %}
-            {% if card.premium == true %}
-            <h6 {{ card.active == 1 ? 'style="color:green;"'}}>Disponible pour les premiums</h6>
+            {% if cards[i].premium == true %}
+            <h6 {{ cards[i].active == 1 ? 'style="color:green;"'}}>Disponible pour les premiums</h6>
             {% endif %}
-            <p class="card-text">{{ card.description }}</p>
+            <p class="card-text">{{ cards[i].description }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="{{ cards[i+1].preview }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ cards[i+1].name }}</h5>
+            {% if cards[i+1].active == true %}
+            <h6 {{ cards[i+1].active == 1 ? 'style="color:green;"'}}>Actif</h6>
+            {% endif %}
+            {% if cards[i+1].premium == true %}
+            <h6 {{ cards[i+1].active == 1 ? 'style="color:green;"'}}>Disponible pour les premiums</h6>
+            {% endif %}
+            <p class="card-text">{{ cards[i+1].description }}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>

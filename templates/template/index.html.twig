@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Templates !{% endblock %}
+
+{% block body %}
+<style>
+@media screen and (max-width: 1200px) {
+.main{
+    flex-direction: column;
+}
+.contain{
+    width:100%;
+}
+}
+</style>
+    {{ include('navbar.html') }}
+<div class="main" style="display:flex;">
+<div class"contain">
+<div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-light">Theme Forest</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Theme Sun</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Theme Moon</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Theme School</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Theme City</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Theme Country</a>
+            </div>
+        </div>
+        </div>
+    {% for card in cards %}
+    <div class="contain2" style="flex-direction:column; display:block;">
+    <div class="card" style="width: 18rem;">
+        <img src="{{ card.preview }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ card.name }}</h5>
+            {% if card.active == true %}
+            <h6 {{ card.active == 1 ? 'style="color:green;"'}}>Actif</h6>
+            {% endif %}
+            {% if card.premium == true %}
+            <h6 {{ card.active == 1 ? 'style="color:green;"'}}>Disponible pour les premiums</h6>
+            {% endif %}
+            <p class="card-text">{{ card.description }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+     {{ include('footer.html') }}
+{% endblock %}
